@@ -1,0 +1,451 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav id="navbar">
+      <header id="">Inro to C#</header>
+     <ul>
+       <li>
+         <a class="nav-link" href="#Introduction">Introduction</a>
+         </li>
+       <li><a class="nav-link" href="#Types">Types</a></li>
+       <li> <a class="nav-link" href="#Program_building_blocks">Program building blocks</a>
+       </li>
+       <li><a class="nav-link" href="#Major_language_areas">Major language areas</a></li>
+
+        <li><a class="nav-link" href="#C#_language_strategy">C# language strategy</a></li>
+       
+       <li>
+         <a class="nav-link" href="#Contact_Information">Contact Information</a>
+         </li>
+
+     </ul>
+     </nav>
+ <main id="main-doc">
+  <header>Introduction to C#</header>
+   <section class="main-section" id="Introduction">
+     <header>Introduction</header>
+     <p>C# is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in .NET. C# has its roots in the C family of languages and will be immediately familiar to C, C++, Java, and JavaScript programmers.</p>
+     <p>C# is an object-oriented, component-oriented programming language. C# provides language constructs to directly support these concepts, making C# a natural language in which to create and use software components. Since its origin, C# has added features to support new workloads and emerging software design practices. At its core, C# is an object-oriented language. You define types and their behavior.</p>
+     <p>Several C# features help create robust and durable applications. Garbage collection automatically reclaims memory occupied by unreachable unused objects. Nullable types guard against variables that don't refer to allocated objects. Exception handling provides a structured and extensible approach to error detection and recovery. Lambda expressions support functional programming techniques. Language Integrated Query (LINQ) syntax creates a common pattern for working with data from any source. Language support for asynchronous operations provides syntax for building distributed systems. C# has a unified type system. All C# types, including primitive types such as int and double, inherit from a single root object type. All types share a set of common operations. Values of any type can be stored, transported, and operated upon in a consistent manner. Furthermore, C# supports both user-defined reference types and value types. C# allows dynamic allocation of objects and in-line storage of lightweight structures. C# supports generic methods and types, which provide increased type safety and performance. C# provides iterators, which enable implementers of collection classes to define custom behaviors for client code.</p>
+     <p>C# emphasizes versioning to ensure programs and libraries can evolve over time in a compatible manner. Aspects of C#'s design that were directly influenced by versioning considerations include the separate virtual and override modifiers, the rules for method overload resolution, and support for explicit interface member declarations.</p>
+     <h3>Types and variables</h3>
+     <article>
+       A type defines the structure and behavior of any data in C#. The declaration of a type may include its members, base type, interfaces it implements, and operations permitted for that type. A variable is a label that refers to an instance of a specific type.
+       <br>
+       There are two kinds of types in C#: value types and reference types. Variables of value types directly contain their data. Variables of reference types store references to their data, the latter being known as objects. With reference types, it's possible for two variables to reference the same object and possible for operations on one variable to affect the object referenced by the other variable. With value types, the variables each have their own copy of the data, and it isn't possible for operations on one to affect the other (except for ref and out parameter variables).
+       <br>
+       An identifier is a variable name. An identifier is a sequence of unicode characters without any whitespace. An identifier may be a C# reserved word, if it's prefixed by @. Using a reserved word as an identifier can be useful when interacting with other languages.
+<br>
+C#'s value types are further divided into simple types, enum types, struct types, nullable value types, and tuple value types. C#'s reference types are further divided into class types, interface types, array types, and delegate types.
+<br>
+The following outline provides an overview of C#'s type system.
+       <ul>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+       </ul>
+     </article>
+     </section>
+
+
+   <section class="main-section" id="Types">
+     <header>Types</header>
+     <p>As an object-oriented language, C# supports the concepts of encapsulation, inheritance, and polymorphism. A class may inherit directly from one parent class, and it may implement any number of interfaces. Methods that override virtual methods in a parent class require the override keyword as a way to avoid accidental redefinition. In C#, a struct is like a lightweight class; it's a stack-allocated type that can implement interfaces but doesn't support inheritance. C# provides record class and record struct types, which are types whose purpose is primarily storing data values.</p>
+<p>
+All types are initialized through a constructor, a method responsible for initializing an instance. Two constructor declarations have unique behavior:
+<br>
+A parameterless constructor, which initializes all fields to their default value.
+A primary constructor, which declares the required parameters for an instance of that type.</p>
+ <h2>Classes and objects</h2>
+     <p>
+Classes are the most fundamental of C#'s types. A class is a data structure that combines state (fields) and actions (methods and other function members) in a single unit. A class provides a definition for instances of the class, also known as objects. Classes support inheritance and polymorphism, mechanisms whereby derived classes can extend and specialize base classes.
+
+New classes are created using class declarations. A class declaration starts with a header. The header specifies:
+
+The attributes and modifiers of the class
+The name of the class
+The base class (when inheriting from a base class)
+The interfaces implemented by the class.
+The header is followed by the class body, which consists of a list of member declarations written between the delimiters { and }.
+
+The following code shows a declaration of a simple class named Point:
+     </p>
+     <div>
+       <code>
+       public class Point
+       <br>
+{
+       <br>
+
+    public int X { get; }
+       <br>
+
+    public int Y { get; }
+       <br>
+
+    
+    public Point(int x, int y) => (X, Y) = (x, y);
+       <br>
+
+}
+     </code>
+     </div>
+     <h3>Type parameters</h3>
+     <div>
+       <p>Generic classes define type parameters. Type parameters are a list of type parameter names enclosed in angle brackets. Type parameters follow the class name. The type parameters can then be used in the body of the class declarations to define the members of the class. In the following example, the type parameters of Pair are TFirst and TSecond:</p>
+       <code>public class Pair<TFirst, TSecond>
+{
+    public TFirst First { get; }
+    public TSecond Second { get; }
+    
+    public Pair(TFirst first, TSecond second) => 
+        (First, Second) = (first, second);
+}</code>
+       </div>
+<div>
+       <h4>Base Classes</h4>
+       <p>
+         A class declaration may specify a base class. Follow the class name and type parameters with a colon and the name of the base class. Omitting a base class specification is the same as deriving from type object. In the following example, the base class of Point3D is Point. From the first example, the base class of Point is object:
+</p>
+<code>
+ public class Point3D : Point
+{
+    public int Z { get; set; }
+    
+    public Point3D(int x, int y, int z) : base(x, y)
+    {
+        Z = z;
+    }
+} 
+</code>
+       </div>
+
+   </section>
+   <section class="main-section" id="Program_building_blocks">
+     <header>Program building blocks</header>
+<h2>Members<h2/>
+
+  <p>The members of a class are either static members or instance members. Static members belong to classes, and instance members belong to objects (instances of classes).
+
+The following list provides an overview of the kinds of members a class can contain.
+
+Constants: Constant values associated with the class
+Fields: Variables that are associated with the class
+Methods: Actions that can be performed by the class
+Properties: Actions associated with reading and writing named properties of the class
+Indexers: Actions associated with indexing instances of the class like an array
+Events: Notifications that can be generated by the class
+Operators: Conversions and expression operators supported by the class
+Constructors: Actions required to initialize instances of the class or the class itself
+Finalizers: Actions done before instances of the class are permanently discarded
+Types: Nested types declared by the class</p>
+<h3>Fields</h3>
+<p>
+  A field is a variable that is associated with a class or with an instance of a class.
+
+A field declared with the static modifier defines a static field. A static field identifies exactly one storage location. No matter how many instances of a class are created, there's only ever one copy of a static field.
+
+A field declared without the static modifier defines an instance field. Every instance of a class contains a separate copy of all the instance fields of that class.
+
+In the following example, each instance of the Color class has a separate copy of the R, G, and B instance fields, but there's only one copy of the Black, White, Red, Green, and Blue static fields
+</p>
+<code>
+  public class Color
+{
+    public static readonly Color Black = new(0, 0, 0);
+    public static readonly Color White = new(255, 255, 255);
+    public static readonly Color Red = new(255, 0, 0);
+    public static readonly Color Green = new(0, 255, 0);
+    public static readonly Color Blue = new(0, 0, 255);
+    
+    public byte R;
+    public byte G;
+    public byte B;
+
+    public Color(byte r, byte g, byte b)
+    {
+        R = r;
+        G = g;
+        B = b;
+    }
+}
+</code>
+
+<h4>Methods</h4>
+<p>
+  A method is a member that implements a computation or action that can be performed by an object or class. Static methods are accessed through the class. Instance methods are accessed through instances of the class.
+<br>
+Methods may have a list of parameters, which represent values or variable references passed to the method. Methods have a return type, which specifies the type of the value computed and returned by the method. A method's return type is void if it doesn't return a value.
+<br>
+Like types, methods may also have a set of type parameters, for which type arguments must be specified when the method is called. Unlike types, the type arguments can often be inferred from the arguments of a method call and need not be explicitly given.
+<br>
+The signature of a method must be unique in the class in which the method is declared. The signature of a method consists of the name of the method, the number of type parameters, and the number, modifiers, and types of its parameters. The signature of a method doesn't include the return type.
+</p>
+<code>public override string ToString() => "This is an object";
+  </code>
+  <h3>Parameters</h3>
+  <p>
+Parameters are used to pass values or variable references to methods. The parameters of a method get their actual values from the arguments that are specified when the method is invoked. There are four kinds of parameters: value parameters, reference parameters, output parameters, and parameter arrays.
+
+A value parameter is used for passing input arguments. A value parameter corresponds to a local variable that gets its initial value from the argument that was passed for the parameter. Modifications to a value parameter don't affect the argument that was passed for the parameter.
+
+Value parameters can be optional, by specifying a default value so that corresponding arguments can be omitted.
+
+A reference parameter is used for passing arguments by reference. The argument passed for a reference parameter must be a variable with a definite value. During execution of the method, the reference parameter represents the same storage location as the argument variable. A reference parameter is declared with the ref modifier. The following example shows the use of ref parameters.
+</p>
+<code>static void Swap(ref int x, ref int y)
+{
+    int temp = x;
+    x = y;
+    y = temp;
+}
+
+public static void SwapExample()
+{
+    int i = 1, j = 2;
+    Swap(ref i, ref j);
+    Console.WriteLine($"{i} {j}");    // "2 1"
+}</code>
+<p>An output parameter is used for passing arguments by reference. It's similar to a reference parameter, except that it doesn't require that you explicitly assign a value to the caller-provided argument. An output parameter is declared with the out modifier. The following example shows the use of out parameters</p>
+<code>static void Divide(int x, int y, out int quotient, out int remainder)
+{
+    quotient = x / y;
+    remainder = x % y;
+}
+
+public static void OutUsage()
+{
+    Divide(10, 3, out int quo, out int rem);
+    Console.WriteLine($"{quo} {rem}");	// "3 1"
+}</code>
+   </section>
+   <section class="main-section" id="Major_language_areas"> 
+     <header>Major language areas</header>
+
+  <h2>Members<h2>
+   
+      <p>
+The members of a class are either static members or instance members. Static members belong to classes, and instance members belong to objects (instances of classes).
+<br>
+The following list provides an overview of the kinds of members a class can contain.
+<div>
+<strong>Constants:</strong> Constant values associated wi th the class
+<strong>Fields:</strong> Variables that are associated with the class
+Methods:</strong>C Actions that can be performed by the class
+<strong>Properties:</strong> Actions associated with reading and writing named properties of the class
+<strong>Indexers:</strong> Actions associated with indexing instances of the class like an array
+<strong>Events:</strong> Notifications that can be generated by the class
+<strong>Operators:</strong> Conversions and expression operators supported by the class
+<strong>Constructors:</strong> Actions required to initialize instances of the class or the class itself
+<strong>Finalizers:</strong> Actions done before instances of the class are permanently discarded
+<strong>Types:</strong> Nested types declared by the class
+</div>
+</p>
+  <div>
+   <h3>Accessibility</h3>
+<p>
+Each member of a class has an associated accessibility, which controls the regions of program text that can access the member. There are six possible forms of accessibility. The access modifiers are summarized below.
+
+<strong>public:</strong> Access isn't limited.
+<strong>private:</strong> Access is limited to this class.
+<strong>protected:</strong> Access is limited to this class or classes derived from this class.
+<strong>internal:</strong> Access is limited to the current assembly (.exe or .dll).
+<strong>protected internal:</strong> Access is limited to this class, classes derived from this class, or classes within the same assembly.
+private protected: Access is limited to this class or classes derived from this type within the same assembly.
+Fields
+A field is a variable that is associated with a class or with an instance of a class.
+<br>
+A field declared with the static modifier defines a static field. A static field identifies exactly one storage location. No matter how many instances of a class are created, there's only ever one copy of a static field.
+<br>
+A field declared without the static modifier defines an instance field. Every instance of a class contains a separate copy of all the instance fields of that class.
+<br>
+In the following example, each instance of the Color class has a separate copy of the R, G, and B instance fields, but there's only one copy of the Black, White, Red, Green, and Blue static fields:
+  </div>
+</p>
+
+   </section>
+   <section class="main-section" id="C#_language_strategy">
+     <header>C# language strategy</header>
+<h2>Arrays, collections, and LINQ</h2>
+
+  <p>
+C# and .NET provide many different collection types. Arrays have syntax defined by the language. Generic collection types are listed in the System.Collections.Generic namespace. Specialized collections include System.Span for accessing continuous memory on the stack frame, and System.Memory for accessing continuous memory on the managed heap. All collections, including arrays, Span, and Memory share a unifying principle for iteration. You use the System.Collections.Generic.IEnumerable interface. This unifying principle means that any of the collection types can be used with LINQ queries or other algorithms. You write methods using IEnumerable and those algorithms work with any collection.
+</p>
+<h3>Arrays</h3>
+<p>
+An array is a data structure that contains a number of variables that are accessed through computed indices. The variables contained in an array, also called the elements of the array, are all of the same type. This type is called the element type of the array.
+<br>
+Array types are reference types, and the declaration of an array variable simply sets aside space for a reference to an array instance. Actual array instances are created dynamically at run time using the new operator. The new operation specifies the length of the new array instance, which is then fixed for the lifetime of the instance. The indices of the elements of an array range from 0 to Length - 1. The new operator automatically initializes the elements of an array to their default value, which, for example, is zero for all numeric types and null for all reference types.
+<br>
+The following example creates an array of int elements, initializes the array, and prints the contents of the array.
+</p>
+<div>
+  <p>The following example creates an array of int elements, initializes the array, and prints the contents of the array.</p>
+
+  <code>
+  int[] a = new int[10];
+  <br>
+for (int i = 0; i < a.Length; i++)
+  <br>
+
+{
+  <br>
+
+    a[i] = i * i;
+  <br>
+
+}
+  <br>
+
+for (int i = 0; i < a.Length; i++)
+  <br>
+
+{
+  <br>
+
+    Console.WriteLine($"a[{i}] = {a[i]}");
+  <br>
+
+}
+</code>
+</div>
+
+   </section>
+   <section class="main-section" id="Contact_Information">
+     <header>Contact Information</header>
+<div>
+  <ol>
+    <li>Name: Just Sharkie</li>
+    <li>Email: Charlettat13@gmail.com</li>
+    <li>Phone number: 904-800-8344</li>
+    <li>Company name: The Malaysia Experince</li>
+
+  </ol>
+  </div>
+   </section>
+   </main>
+
+</body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+#main-doc header {
+  text-align: center;
+  margin: 0px;
+}
+html,
+body {
+  min-width: 290px;
+  color: #4d4e53;
+  background-color: #ffffff;
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 1.5;
+}
+#main-doc header {
+  text-align: left;
+  margin: 0px;
+}
+
+#navbar ul {
+  height: 88%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#navbar li {
+  color: #4d4e53;
+  border-top: 1px solid;
+  list-style: none;
+  position: relative;
+  width: 100%;
+}
+
+#navbar a {
+  display: block;
+  padding: 10px 30px;
+  color: #4d4e53;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#main-doc {
+  position: absolute;
+  margin-left: 310px;
+  padding: 20px;
+  margin-bottom: 110px;
+}
+section {
+  margin: 15px 0px 0px 20px;
+}
+
+code {
+  display: block;
+  text-align: left;
+  white-space: pre-line;
+  position: relative;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 2;
+  background-color: #f7f7f7;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 815px) {
+  /* For mobile phones: */
+  #navbar ul {
+    border: 1px solid;
+    height: 207px;
+  }
+
+  #navbar {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: 275px;
+    border: none;
+    z-index: 1;
+    border-bottom: 2px solid;
+  }
+
+  #main-doc {
+    position: relative;
+    margin-left: 0px;
+    margin-top: 270px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #main-doc {
+    margin-left: -10px;
+  }
+
+  code {
+    margin-left: -20px;
+    width: 100%;
+    padding: 15px;
+    padding-left: 10px;
+    padding-right: 45px;
+    min-width: 233px;
+  }
+}
+
+
+** end of undefined **
+
